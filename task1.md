@@ -2,6 +2,8 @@ numpy输入输出练习
 -----
 ![](https://img.shields.io/badge/python-3.8-blue) ![](https://img.shields.io/badge/numpy-1.18.5-pink) <br>
 [numpy数组只打印小数点后三位](#readme)
+[限制numpy数组输出中打印的项目](#readme)
+[打印完整的numpy数组而不中断](#readme)
 #### 1. numpy数组只打印小数点后三位
 任务详情:只打印或显示`numpy`数组的小数点后三位:
 ``` python
