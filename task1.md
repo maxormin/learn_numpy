@@ -17,7 +17,7 @@ print(rand_arr)
 其存在多种解决方法，以下举例两种:<br>
 ##### 1.使用np.around
 `numpy.around(a, decimals=0, out=None)`
-该方法是通过对numpy数组进行四色五入保留3位小数而得到，在不赋值的情况下并不会对原数组造成影响
+<br>该方法是通过对numpy数组进行四舍五入保留3位小数而得到，在不赋值的情况下并不会对原数组造成影响
 ``` python
 print(np.around(rand_arr,decimals = 3))
 # [[0.503 0.226 0.083]
