@@ -69,7 +69,7 @@ print(rand_arr)
 ```
 #### 打印完整的numpy数组而不中断
 任务详情:打印完整的`numpy`数组而不中断:
-与2相同，使用`numpy`中`np.set_printoptions`方法，因为`numpy`中`np.inf=∞`，因此，令`threshold=np.inf`时打印数组不中断
+与之前相同，使用`numpy`中`np.set_printoptions`方法，因为`numpy`中`np.inf=∞`，因此，令`threshold=np.inf`时打印数组不中断
 ``` python
 np.set_printoptions(threshold=np.inf)
 print(rand_arr)
