@@ -94,9 +94,56 @@ print(x)
 | ---------- | -----------|
 | low   | 下限 |
 | high   | 上限 |
-| size   | 大小 |
+| size   | 采用的次数 |
 ``` python
+import numpy as np
+import matplotlib.pyplot as plt
 
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+np.random.seed(2020)
+a = 0
+b = 100
+size = 50000
+x = np.random.uniform(a, b, size=size)
+print(np.all(x >= 0))  
+# True
+print(np.all(x < 100))  
+# True
+y = (np.sum(x < 50) - np.sum(x < 10)) / size 
+print(y)  
+# 0.40006
+
+plt.hist(x, bins=100)
+plt.show()
 ```
+![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83.png)
 
+#### 正态分布
+**numpy中使用`numpy.random.randn(size)`实现**
+| 参数  | 解释|
+| ---------- | -----------|
+| size   | 采用的次数 |
+``` python
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(2020)
+size = 50000
+x = np.random.randn(size)
+y1 = (np.sum(x < 1) - np.sum(x < -1)) / size
+y2 = (np.sum(x < 2) - np.sum(x < -2)) / size
+y3 = (np.sum(x < 3) - np.sum(x < -3)) / size
+print(y1)
+# 0.684
+print(y2)  
+# 0.95638
+print(y3)  
+# 0.99726
+
+plt.hist(x, bins=20)
+plt.show()
+```
+![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83.png)
 ## 练习
