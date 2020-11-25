@@ -6,9 +6,9 @@ numpy随机抽样学习及练习
 在生成numpy数组时，可使用`numpy.random`进行数组的随机生成，`numpy.random`是对python内置的random进行了补充，
 增加了一些用于高效生成多种概率分布的样本值的函数，如正态分布、泊松分布等。<br>
 * `numpy.random.seed(seed=None) `其中seed用于指定随机种子，若不指定，则根据时间来自己选择该值。
-#### 离散型随机变量
+### 离散型随机变量
 ------
-###### 二项分布
+#### 二项分布
 抛硬币问题<br>
 **核心函数`numpy.random.binomial(n,p,size=None)`二项随机变量,可视化地表现概率**
 | 参数  | 解释|
@@ -46,3 +46,4 @@ s = stats.binom.pmf(range(n + 1), n, p)
 print(np.around(s, 3))
 #[0.25 0.5  0.25]
 ```
+![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83.png)
