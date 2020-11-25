@@ -163,3 +163,43 @@ plt.show()
 ```
 ![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83.png)
 ## 练习
+------
+### 创建一个形为5×3的二维数组，以包含5到10之间的随机数。
+``` python
+import numpy as np
+
+print(np.random.uniform(low=5,high=10,size=(5,3)))
+# [[5.40438237 8.47420326 8.02603325]
+#  [8.46037978 6.69370754 7.5433155 ]
+#  [7.97231603 7.3799803  8.82689239]
+#  [5.97004669 6.51704708 9.67124291]
+#  [5.27770743 7.93573043 9.0477904 ]]
+```
+
+### 生成相应的数据
+创建分别具有5000个数据的训练集（xi，y）和测试集（xi，y），其中xi在间隔（-10,10）上均匀随机分布。为了使回归问题“真实”，大的均匀噪声分布在[-0.2,0.2]已添加到所有训练样本中，同时测试数据保持无噪声。
+![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E7%BB%83%E4%B9%A0%E5%9B%BE%E7%89%87.png)
+``` python
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+np.random.seed(2020)
+a = -10
+b = 10
+size = 5000
+x = np.random.uniform(a, b, size=size)
+y = x.copy()
+y[y==0] = 1
+y[y!=0] = np.sin(y) / y
+test_y = y.copy()
+y += np.random.uniform(-0.2, 0.2, size=size)
+
+plt.scatter(x,y,label='Expected')
+plt.scatter(x,test_y,label='Actual')
+plt.legend()
+plt.show()
+```
+![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E7%BB%93%E6%9E%9C.png)
