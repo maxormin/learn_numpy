@@ -3,7 +3,7 @@ numpy随机抽样学习及练习
 ![](https://img.shields.io/badge/python-3.8-blue) ![](https://img.shields.io/badge/numpy-1.18.5-pink)<br>
 ## 学习
 > [离散型随机变量](#离散型随机变量)
->> [二项分布](#二项分布)
+>> [二项分布](#二项分布)<br>
 >> [泊松分布](#泊松分布)
 ------
 在生成numpy数组时，可使用`numpy.random`进行数组的随机生成，`numpy.random`是对python内置的random进行了补充，
@@ -86,3 +86,17 @@ print(x)
 # 0.14900277967433773
 ```
 ![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83.png)
+### 连续型随机变量
+------
+#### 均匀分布
+**numpy中使用`numpy.random.uniform(low=0.0, high=1.0, size=None)`实现**
+| 参数  | 解释|
+| ---------- | -----------|
+| low   | 下限 |
+| high   | 上限 |
+| size   | 大小 |
+``` python
+
+```
+
+## 练习
