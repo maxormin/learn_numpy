@@ -9,13 +9,13 @@ numpy随机抽样学习及练习
 ### 离散型随机变量
 ------
 #### 二项分布
-抛硬币问题<br>
-**核心函数`numpy.random.binomial(n,p,size=None)`二项随机变量,可视化地表现概率**
+用于只有两种结果的问题中，例如抛硬币问题<br>
+**numpy中使用`numpy.random.binomial(n,p,size=None)`实现**
 | 参数  | 解释|
 | ---------- | -----------|
-| n   | 一次试验的样本数n，并且相互不干扰(个人理解为有n种结果)   |
-| p   | 事件发生的概率p，范围[0,1]   |
-| size   | 表示实验size次，返回每次实验中事件发生的次数   |
+| n   | 做了n重伯努利试验 |
+| p   | 成功的概率 |
+| size   | 采用的次数 |
 ``` python
 import numpy as np
 from scipy import stats
@@ -47,3 +47,38 @@ print(np.around(s, 3))
 #[0.25 0.5  0.25]
 ```
 ![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83.png)
+#### 泊松分布
+主要用于估计某个时间段某事件发生的概率，例如假定某航空公司预定票处平均每小时接到42次订票电话，
+那么10分钟内恰好接到6次电话的概率是多少。
+**numpy中使用`numpy.random.poisson(lam=1.0, size=None)`实现**
+| 参数  | 解释|
+| ---------- | -----------|
+| lam   | 一个单位内发生事件的平均值 |
+| size   | 采用的次数 |
+``` python
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+np.random.seed(2020)
+# 平均值：平均每十分钟接到42/6次订票电话
+lam = 42 / 6
+size = 50000
+x = np.random.poisson(lam, size)
+
+print(np.sum(x == 6) / size)
+#0.15022
+
+plt.hist(x)
+plt.xlabel('随机变量：每十分钟接到订票电话的次数')
+plt.ylabel('50000个样本中出现的次数')
+plt.show()
+
+x = stats.poisson.pmf(6, lam)
+print(x)  
+# 0.14900277967433773
+```
+![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83.png)
