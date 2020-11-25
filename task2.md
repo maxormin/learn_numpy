@@ -2,10 +2,14 @@ numpy随机抽样学习及练习
 -----
 ![](https://img.shields.io/badge/python-3.8-blue) ![](https://img.shields.io/badge/numpy-1.18.5-pink)<br>
 ## 学习
+> [离散型随机变量](#离散型随机变量)
+>> [二项分布](#二项分布)
+>> [泊松分布](#泊松分布)
 ------
 在生成numpy数组时，可使用`numpy.random`进行数组的随机生成，`numpy.random`是对python内置的random进行了补充，
 增加了一些用于高效生成多种概率分布的样本值的函数，如正态分布、泊松分布等。<br>
 * `numpy.random.seed(seed=None) `其中seed用于指定随机种子，若不指定，则根据时间来自己选择该值。
+-------
 ### 离散型随机变量
 ------
 #### 二项分布
