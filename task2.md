@@ -121,27 +121,37 @@ plt.show()
 ![](https://github.com/maxormin/learn_numpy/blob/main/task2_img/%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83.png)
 
 #### 正态分布
-**numpy中使用`numpy.random.randn(size)`实现**
+**numpy中使用`numpy.random.normal(loc=0.0, scale=1.0, size=None)`或`numpy.random.randn(size)`实现,其中由randn生成的是服从均值为0，标准差
+为1的数组**
 | 参数  | 解释|
 | ---------- | -----------|
+| loc   | 均值 |
+| scale   | 方差 |
 | size   | 采用的次数 |
 ``` python
 import numpy as np
 import matplotlib.pyplot as plt
 
-np.random.seed(2020)
-size = 50000
-x = np.random.randn(size)
-y1 = (np.sum(x < 1) - np.sum(x < -1)) / size
-y2 = (np.sum(x < 2) - np.sum(x < -2)) / size
-y3 = (np.sum(x < 3) - np.sum(x < -3)) / size
-print(y1)
-# 0.684
-print(y2)  
-# 0.95638
-print(y3)  
-# 0.99726
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体
+plt.rcParams['axes.unicode_minus'] = False  # 正常显示负号
 
+mu = 5#平均值
+sigma = 0.5#标准差
+
+np.random.seed(2020)
+x = sigma * np.random.randn(2, 4) + mu
+print(x)
+# [[4.11557715 5.03777614 4.43468515 4.67428492]
+#  [4.55344219 4.36294951 4.96942278 5.03225692]]
+
+np.random.seed(2020)
+x = np.random.normal(mu, sigma, (2, 4))
+print(x)
+# [[4.11557715 5.03777614 4.43468515 4.67428492]
+#  [4.55344219 4.36294951 4.96942278 5.03225692]]
+
+size = 50000
+x = np.random.normal(mu, sigma, size)
 plt.hist(x, bins=20)
 plt.show()
 ```
