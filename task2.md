@@ -1,4 +1,4 @@
-numpy随机抽样学习及练习
+随机抽样学习及练习
 -----
 ![](https://img.shields.io/badge/python-3.8-blue) ![](https://img.shields.io/badge/numpy-1.18.5-pink)<br>
 * [学习](#学习)
