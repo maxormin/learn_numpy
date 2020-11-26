@@ -1,4 +1,4 @@
-numpy输入输出练习
+输入输出练习
 -----
 ![](https://img.shields.io/badge/python-3.8-blue) ![](https://img.shields.io/badge/numpy-1.18.5-pink)<br>
 * [numpy数组只打印小数点后三位](#numpy数组只打印小数点后三位)
