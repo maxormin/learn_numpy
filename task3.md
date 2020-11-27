@@ -346,3 +346,4 @@ print(a)
 #  [5 9 8]]
 print(np.amax(a,axis=1)) # [8 4 9 8 9]
 ```
+[返回顶部](#readme)
