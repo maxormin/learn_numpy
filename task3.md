@@ -16,3 +16,23 @@ numpy.amin(a, axis=None, out=None, keepdims=<no value>, initial=<no value>, wher
 | out  | ndarray, optional | 放置结果的备用输出数组 |
 | initial  | scalar, optional | 当该参数有输入时，则输出元素的最大值不超过该参数，若超过，则将超过的元素替换为该值 |
 | where  | array_like of bool, optional | 要比较的元素的最小值。 |
+``` python
+import numpy as np
+
+x = np.array([[11, 12, 13, 14, 15],
+              [16, 17, 18, 19, 20],
+              [21, 22, 23, 24, 25],
+              [26, 27, 28, 29, 30]])
+y = np.amin(x)
+print(y)  # 11
+
+y = np.amin(x, axis=0)
+print(y)  # [11 12 13 14 15]
+
+y = np.amin(x, axis=1)
+print(y)  # [11 16 21 26]
+```
+#### 计算最大值
+使用numpy中`numpy.amin()`函数，该函数接口为<br>
+numpy.amax(a, axis=None, out=None, keepdims=<no value>, initial=<no value>, where=<no value>)<br>
+参数与`numpy.amin大致相同`
