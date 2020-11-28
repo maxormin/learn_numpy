@@ -84,6 +84,35 @@ u, s, v = numpy.linalg.svd(a, full_matrices=True, compute_uv=True, hermitian=Fal
 | compute_uv   | 取值为False或True，默认值为True，表示计算u,s,v。为False的时候只计算s。 |
 * 总共有三个返回值u,s,v，u大小为(M,M)，s大小为(M,N)，v大小为(N,N)，a = u*s*v。
 * 其中s是对矩阵a的奇异值分解。s除了对角元素不为0，其他元素都为0，并且对角元素从大到小排列。s中有n个奇异值，一般排在后面的比较接近0，所以仅保留比较大的r个奇异值。
+``` python
+import numpy as np
+
+A = np.array([[4, 11, 14], [8, 7, -2]])
+print(A)
+# [[ 4 11 14]
+#  [ 8  7 -2]]
+
+u, s, vh = np.linalg.svd(A, full_matrices=False)
+print(u.shape)  # (2, 2)
+print(u)
+# [[-0.9486833  -0.31622777]
+#  [-0.31622777  0.9486833 ]]
+
+print(s.shape)  # (2,)
+print(np.diag(s))
+# [[18.97366596  0.        ]
+#  [ 0.          9.48683298]]
+
+print(vh.shape)  # (2, 3)
+print(vh)
+# [[-0.33333333 -0.66666667 -0.66666667]
+#  [ 0.66666667  0.33333333 -0.66666667]]
+
+a = np.dot(u, np.diag(s))
+print(np.dot(a, vh))
+# [[ 4. 11. 14.]
+#  [ 8.  7. -2.]]
+```
 #### QR分解
 
 #### Cholesky分解
