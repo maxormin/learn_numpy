@@ -119,9 +119,76 @@ index = np.where(np.isnan(a))
 np.delete(a,index[0],axis=0)
 ```
 ## 计算 iris_data 中sepalLength（第1列）和petalLength（第3列）之间的相关系数。
+所用知识:统计相关
 ``` python
 a = data[1:,:4].astype(float)
 print(np.corrcoef(a[:,0], a[:,2]))
 # array([[1.        , 0.87175378],
 #        [0.87175378, 1.        ]])
+```
+## 找出iris_data是否有任何缺失值
+所用知识：逻辑函数
+``` python
+np.isnan(data).any()
+```
+## 在numpy数组中将所有出现的nan替换为0
+所用知识：逻辑函数
+``` python
+iris_data[np.isnan(data)]=0
+```
+## 找出鸢尾属植物物种中的唯一值和唯一值出现的数量
+所用知识：数组操作
+``` python
+np.unique(data)
+#array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1. , 1.1, 1.2, 1.3, 1.4, 1.5, 1.6,
+#       1.7, 1.8, 1.9, 2. , 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9,
+#       3. , 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4. , 4.1, 4.2,
+#       4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5. , 5.1, 5.2, 5.3, 5.4, 5.5,
+#       5.6, 5.7, 5.8, 5.9, 6. , 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8,
+#       6.9, 7. , 7.1, 7.2, 7.3, 7.4, 7.6, 7.7, 7.9])
+```
+## 将 iris_data 的花瓣长度（第3列）以形成分类变量的形式显示。定义：Less than 3 --> ‘small’；3-5 --> ‘medium’；’>=5 --> ‘large’
+所用知识：统计相关
+``` python
+df=pd.DataFrame(data[:,2],columns=['f3'])
+df['str']='small'
+
+df.loc[(df['f3']>=3)&(df['f3']<=5),'str']='medium'
+df.loc[df['f3']>5,'str']='large'
+```
+## 在 iris_data 中创建一个新列，其中 volume 是 (pi x petallength x sepallength ^ 2）/ 3
+所用知识：数组操作
+``` python
+volume = np.pi*data[:,2]*data[:,1]**2/3
+np.c_[data,volume]
+```
+## 随机抽鸢尾属植物的种类，使得Iris-setosa的数量是Iris-versicolor和Iris-virginica数量的两倍
+所用知识：随机抽样
+``` python
+species = np.array(['Iris‐setosa', 'Iris‐versicolor', 'Iris‐virginica'])
+species_out = np.random.choice(species, 10000, p=[0.5, 0.25, 0.25])
+print(np.unique(species_out, return_counts=True))
+```
+## 根据 sepallength 列对数据集进行排序
+所用知识：排序
+``` python
+sepallength = data[:,0]
+index = np.argsort(sepallength)
+data[index][0:10]
+```
+## 在鸢尾属植物数据集中找到最常见的花瓣长度值（第3列）
+所用知识：数组操作
+``` python
+petallength = data[:, 2]
+vals, counts = np.unique(petallength, return_counts=True)
+print(vals[np.argmax(counts)])
+print(np.amax(counts))
+```
+## 在鸢尾花数据集的 petalwidth（第4列）中查找第一次出现的值大于1.0的位置
+所用知识：搜索
+``` python
+petalWidth = data[:, 3]
+index = np.where(petalWidth > 1.0)
+print(index)
+print(index[0][0])
 ```
